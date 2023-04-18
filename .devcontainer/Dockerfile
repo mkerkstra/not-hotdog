@@ -13,7 +13,7 @@ ENV PATH=$PATH:/$PNPM_HOME
 RUN mkdir -p ${PNPM_HOME} && chmod a+rwx ${PNPM_HOME}
 COPY .npmrc .npmrc
 RUN corepack enable && corepack prepare pnpm@7.28.0 && \
-    su node -c "pnpm i -g prisma snaplet"
+    su node -c "pnpm i -g prisma snaplet @nestjs/cli"
 
 USER node
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -N
