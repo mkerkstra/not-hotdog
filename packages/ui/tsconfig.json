@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "exclude": ["dist", "build", "node_modules", ".eslintrc.js"],
+  "extends": "@kerk/tsconfig/component-library.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "root": true
+}

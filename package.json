@@ -1,0 +1,41 @@
+{
+  "name": "kerks-fullstack-template",
+  "version": "0.0.1",
+  "description": "a quick typescript fullstack template",
+  "license": "ISC",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "prisma": {
+    "schema": "packages/data/prisma/schema.prisma"
+  },
+  "packageManager": "pnpm@7.28.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev db:generate:watch",
+    "lint": "turbo run lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "turbo run db:push db:generate --filter=data",
+    "prepare": "node -e \"if (!process.env.CI) {try {require('husky').install()} catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}}\"",
+  },
+  "engines": {
+    "node": "18.x.x"
+  },
+  "dependencies": {
+    "turbo": "^1.7.4",
+    "turbo-linux-arm64": "^1.7.4"
+  },
+  "devDependencies": {
+    "@kerk/eslint-config-kerk": "workspace:*",
+    "@kerk/tsconfig": "workspace:*",
+    "eslint": "^8.34.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4"
+  },
+  "lint-staged": {
+    "*": "eslint --fix -report-unused-disable-directives --cache-location /home/workspace/.eslintcache --cache-strategy content"
+  }
+}

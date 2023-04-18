@@ -1,0 +1,74 @@
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
+{
+  "name": "kerks-fullstack-template",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "prisma.prisma",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.copilot",
+        "eamodio.gitlens",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "npm.packageManager": "pnpm",
+        "eslint.format.enable": true,
+        "editor.formatOnPaste": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profile.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "files.exclude": {
+          ".pnpm*": true,
+          "pnpm*": true,
+          ".npmrc": true,
+          ".eslintignore": true,
+          ".git*": true,
+          "**/node_modules/": true,
+          "**/.turbo": true,
+          "**/.next": true,
+          ".husky": true,
+          ".lintstagedrc": true,
+          ".eslintcache": true,
+          ".editorconfig": true
+        },
+        "files.eol": "\n"
+      }
+    }
+  },
+
+  "remoteEnv": {
+    "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres?schema=public",
+    "PNPM_HOME": "/home/.pnpm"
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or with the host.
+  "forwardPorts": [3000, 5432],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "chmod a+x ./.devcontainer/postCreate.sh && ./.devcontainer/postCreate.sh",
+  "postStartCommand": "chmod a+x ./devcontainer/postStart.sh && ./devcontainer/postStart.sh",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node"
+}

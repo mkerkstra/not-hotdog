@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules"],
+  "extends": "@kerk/tsconfig/base.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "outDir": "dist",
+  "target": "CommonJS"
+}

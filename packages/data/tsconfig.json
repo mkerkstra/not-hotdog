@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "exclude": ["dist", "build", "node_modules"],
+  "extends": "@kerk/tsconfig/component-library.json",
+  "include": ["**/*.ts"],
+  "root": true
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@kerk/tsconfig",
+  "version": "0.0.1",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "component-library.json"
+  ],
+  "dependencies": {
+    "typescript": "^4.9.5"
+  }
+}
