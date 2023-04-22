@@ -15,6 +15,7 @@
         "prisma.prisma",
         "esbenp.prettier-vscode",
         "ms-azuretools.vscode-docker",
+        "ms-python.python",
         "GitHub.vscode-pull-request-github",
         "GitHub.copilot",
         "eamodio.gitlens",
@@ -63,11 +64,11 @@
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // This can be used to network with other containers or with the host.
-  "forwardPorts": [3000, 5432],
+  "forwardPorts": [3000, 5432, 5000],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "chmod a+x ./.devcontainer/postCreate.sh && ./.devcontainer/postCreate.sh",
-  "postStartCommand": "chmod a+x ./devcontainer/postStart.sh && ./devcontainer/postStart.sh",
+  "postStartCommand": "chmod a+x ./.devcontainer/postStart.sh && ./.devcontainer/postStart.sh",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "node"

@@ -1,0 +1,4 @@
+fastai==2.*
+torch==2.*
+torchvision
+flask==2.*

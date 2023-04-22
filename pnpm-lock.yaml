@@ -23,8 +23,12 @@ importers:
       lint-staged: 13.2.1
       prettier: 2.8.7
 
+  apps/api-flask:
+    specifiers: {}
+
   apps/api-nest:
     specifiers:
+      '@kerk/data': workspace:*
       '@nestjs/cli': ^9.0.0
       '@nestjs/common': ^9.0.0
       '@nestjs/core': ^9.0.0
@@ -52,6 +56,7 @@ importers:
       tsconfig-paths: 4.2.0
       typescript: ^4.7.4
     dependencies:
+      '@kerk/data': link:../../packages/data
       '@nestjs/common': 9.4.0_mnr6j2del53muneqly5h4y27ai
       '@nestjs/core': 9.4.0_qfvkcqqlilywzuwwu2xqitbr3m
       '@nestjs/platform-express': 9.4.0_gqkob5jndcfeb3wjw72wbdwyne
