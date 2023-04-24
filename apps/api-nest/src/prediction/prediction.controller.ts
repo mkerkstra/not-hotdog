@@ -9,7 +9,7 @@ export class PredictionController {
     const s3 = new S3();
     const objectKey = body.url.split('/').pop();
     const params = {
-      Bucket: 'kerks-hotdog-images',
+      Bucket: process.env.AWS_S3_BUCKET_NAME,
       Key: objectKey,
     };
     const s3Stream = s3.getObject(params).createReadStream();

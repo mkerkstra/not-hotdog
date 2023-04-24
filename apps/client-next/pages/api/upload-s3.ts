@@ -3,8 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import AWS from "aws-sdk";
 import { nanoid } from "nanoid";
 
-const region = "us-east-1";
-const bucketName = "kerks-hotdog-images";
+const bucketName = process.env.AWS_S3_BUCKET_NAME || "";
 
 AWS.config.credentials = new AWS.SharedIniFileCredentials({
   profile: "default",

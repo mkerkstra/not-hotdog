@@ -4,14 +4,15 @@
     "build": {
       "dependsOn": ["^build", "^db:push", "^db:generate"],
       "outputs": ["dist/**", ".next/**"],
-      "env": ["NODE_ENV"]
+      "env": ["NODE_ENV", "AWS_S3_BUCKET_NAME", "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
     },
     "lint": {
       "outputs": []
     },
     "dev": {
       "dependsOn": ["^build"],
-      "cache": false
+      "cache": false,
+      "env": ["NODE_ENV", "AWS_S3_BUCKET_NAME", "AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
     },
     "db:generate:watch": {
       "cache": false
