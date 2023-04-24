@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Button = ({ children }: { children: React.ReactNode }) => (
-  <button className="bg-red-500">{children}</button>
+export const Button = (args: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) => (
+  <button className="bg-red-500" {...args}>{args?.children}</button>
 );
