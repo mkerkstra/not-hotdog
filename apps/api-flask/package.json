@@ -1,5 +1,5 @@
 {
-  "name": "my-flask-app",
+  "name": "api-flask",
   "version": "1.0.0",
   "description": "A Flask app that classifies hotdog and non-hotdog images",
   "scripts": {

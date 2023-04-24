@@ -1,7 +1,7 @@
 {
-  "name": "kerks-fullstack-template",
+  "name": "hotdog-not-hotdog",
   "version": "0.0.1",
-  "description": "a quick typescript fullstack template",
+  "description": "a fullstack app for checking hotdogs",
   "license": "ISC",
   "private": true,
   "workspaces": [
