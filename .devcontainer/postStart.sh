@@ -5,7 +5,7 @@ set -e
 pnpm i
 
 # Install Python dependencies using pip
-find . -name requirements.txt -exec pip install -r {} \;
+find . -name requirements.txt -exec pip3 install -r {} \;
 
 # Generate our prisma schema, seed the database
 pnpm generate

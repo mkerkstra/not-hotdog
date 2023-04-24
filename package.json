@@ -11,7 +11,7 @@
   "prisma": {
     "schema": "packages/data/prisma/schema.prisma"
   },
-  "packageManager": "pnpm@7.28.0",
+  "packageManager": "pnpm@8.3.1",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev db:generate:watch",
@@ -23,16 +23,16 @@
     "node": "18.x.x"
   },
   "dependencies": {
-    "turbo": "^1.7.4",
-    "turbo-linux-arm64": "^1.7.4"
+    "turbo": "^1.9.3",
+    "turbo-linux-arm64": "^1.9.3"
   },
   "devDependencies": {
     "@kerk/eslint-config-kerk": "workspace:*",
     "@kerk/tsconfig": "workspace:*",
-    "eslint": "^8.34.0",
+    "eslint": "^8.39.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
-    "prettier": "^2.8.4"
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8"
   },
   "lint-staged": {
     "*": "eslint --fix -report-unused-disable-directives --cache-location /home/workspace/.eslintcache --cache-strategy content"
