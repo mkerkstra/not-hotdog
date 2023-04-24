@@ -6,6 +6,47 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useSWRMutation from "swr/mutation";
 
+function Prediction({ url }: { url?: string }) {
+  const [err, setErr] = React.useState<Error | unknown>();
+  const predictionReq = useSWRMutation<{ prediction: unknown }>(
+    "localhost:4000/prediction",
+    async (_, { arg }: { arg: { url: string } }) => {
+      return await fetch('localhost:4000/prediction', {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(arg),
+      });
+    }
+  );
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!url) {
+      setErr("no file selected");
+      return;
+    }
+    try {
+      await predictionReq.trigger({ url });
+    } catch (e) {
+      setErr(e);
+    }
+  };
+
+  const prediction = predictionReq.data?.prediction;
+
+  return (
+    <>
+      <button disabled={!url} type="submit" onClick={handleSubmit}>
+        Predict
+      </button>
+      {prediction && <div>Prediction: {prediction}</div>}
+      {err && <span style={{ color: "red" }}>{JSON.stringify(err)}</span>}
+    </>
+  );
+}
+
 export default function HotdogNotHotdog() {
   const router = useRouter();
   const [, startTransition] = React.useTransition();
@@ -21,24 +62,23 @@ export default function HotdogNotHotdog() {
     }
   }
 
-  const req = useSWRMutation(
+  const uploadReq = useSWRMutation(
     "/api/upload-s3",
-    async (url: string, { arg }: { arg: { file: File } }) => {
+    async (_, { arg }: { arg: { file: File } }) => {
       const data = new FormData();
       data.append("file", arg.file);
-      const res = await fetch("/api/upload-s3", {
+      return await fetch("/api/upload-s3", {
         method: "post",
         headers: {
           "Content-Type": "multipart/form-data",
         },
         body: data,
       });
-      return res;
     }
   );
 
   // const isMutating = isPending || req.isMutating;
-  const previewUrl = req.data?.url;
+  const previewUrl = uploadReq.data?.url;
 
   async function uploadFile() {
     if (!selectedFile) {
@@ -46,7 +86,7 @@ export default function HotdogNotHotdog() {
       return;
     }
     try {
-      await req.trigger({ file: selectedFile });
+      await uploadReq.trigger({ file: selectedFile });
     } catch (e) {
       setErr(e);
     }
@@ -96,8 +136,9 @@ export default function HotdogNotHotdog() {
               className="w-full bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600"
               disabled={!selectedFile}
             >
-              Submit
+              Upload image
             </button>
+            <Prediction url={previewUrl} />
           </form>
         </div>
       </div>
