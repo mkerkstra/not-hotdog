@@ -1,38 +1,44 @@
-# M. Kerk's Fullstack Template
+# Hotdog - Not Hotdog
 
-### Apps and Packages
+This monorepo contains the code for the "Hotdog - Not Hotdog" app, which allows users to upload images and determine whether they contain hotdogs or not.
 
-- `client`: a [Next.js](https://nextjs.org/) app
-- `data`: a [Prisma](https://www.prisma.io/) client
+## Architecture
 
-- `eslint-config-kerk`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+The app is composed of three main components:
 
-# Useful Links
+    A Next.js client, which provides the user interface and allows users to upload images.
+    A Nest.js API, which bridges the client and the ML API by processing the user's image and sending it to the ML API for prediction.
+    A Flask API, which contains the ML model and returns predictions for whether an image contains a hotdog or not.
 
-Learn more about the power of Turborepo:
+## Getting Started
 
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+To run the app, you will need to have the following dependencies installed:
 
-# Contributing
+    Docker
+    VS Code (with the Remote - Containers extension installed)
 
-## Devcontainer
-Devcontainer is a feature of VSCode that allows you to run a project in a containerized environment. This is useful for projects that have a lot of dependencies or require a specific environment to run. This project uses devcontainer to run the Next.js server and the database.
+To start the app, open the root folder in VS Code and run the following command:
 
-### Prerequisites
-* [Docker](https://docs.docker.com/get-docker/)
-* [VSCode](https://code.visualstudio.com/download)
+```sh
+pnpm dev
+```
 
-If you use VSCode, you can use the devcontainer to get started quickly. You use the devcontainer to run the project in a containerized environment. This will spin up a database and a Next.js server. You can access the Next.js server at `localhost:3000`.
+This will start the Flask API, the Nest.js API, and the client. You can then access the app by visiting http://localhost:3000 in your web browser.
 
-As described in the [devcontainer docs](https://code.visualstudio.com/docs/remote/containers), you can open the project in a container by opening the project in VSCode and clicking the green button in the bottom left corner of the window.
+## Deployment
 
-### Windows
-We recommend using ssh to clone the repository. Otherwise you have to share [creds](https://code.visualstudio.com/docs/remote/troubleshooting#_sharing-git-credentials-between-windows-and-wsl)
+To deploy the app, you can use a cloud provider such as AWS or Google Cloud Platform.
 
-Make sure you are using wsl2 with a recent ubuntu distro.
+You will need to configure the following services:
+
+    A Next.js deployment, which will host the client.
+    A Nest.js deployment, which will host the API.
+    A Flask deployment, which will host the ML API.
+
+You will also need to configure the following infrastructure:
+
+    A database, such as Postgres, to store user data.
+
+## Goal
+
+The "Hotdog - Not Hotdog" app is an example of how to build a monorepo that includes multiple components and services. By using Docker and VS Code's Remote - Containers extension, you can easily set up a development environment that includes all of the dependencies you need to run the app.
