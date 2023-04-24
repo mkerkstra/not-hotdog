@@ -1,6 +1,6 @@
 // Update the VARIANT arg in docker-compose.yml to pick a Node.js version
 {
-  "name": "kerks-fullstack-template",
+  "name": "not-hotdog",
   "dockerComposeFile": "docker-compose.yml",
   "service": "dev",
   "workspaceFolder": "/workspace",
