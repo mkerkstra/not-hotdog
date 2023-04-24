@@ -19,11 +19,14 @@ export class PredictionController {
       headers: { 'Content-Type': 'image/jpeg' }, // Change to the appropriate content type for your image
     };
     const response = await new Promise((resolve, reject) => {
-      request.post(options, (error, response, body) => {
+      request.post(options, (error, response) => {
         if (error) reject(error);
         else resolve(response);
       });
     });
-    return response.data;
+    if (response?.['body']) {
+      return response?.['body'];
+    }
+    return response;
   }
 }
