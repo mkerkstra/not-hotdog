@@ -7773,7 +7773,7 @@ packages:
       '@jridgewell/source-map': 0.3.11
       acorn: 8.15.0
       commander: 2.20.3
-      source-map-support: 0.5.21
+      source-map-support: 0.5.20
     dev: true
 
   /test-exclude@6.0.0:
